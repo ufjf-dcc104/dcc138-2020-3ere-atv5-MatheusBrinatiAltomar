@@ -2,15 +2,12 @@ import AssetManager from "./AssetManager.js";
 import Cena from "./Cena.js";
 import Sprite from "./Sprite.js";
 
-const img1 = new Image();
-img1.src = "assets/garota.png";
-const img2 = new Image();
-img2.src = "assets/skelly.png";
-const img3 = new Image();
-img3.src = "assets/orc.png";
-document.body.appendChild(img1);
-document.body.appendChild(img2);
-document.body.appendChild(img3);
+assets.carregaImagem("garota", "assets/garota.png");
+assets.carregaImagem("esqueleto", "assets/skelly.png");
+assets.carregaImagem("orc","assets/orc.png");
+document.body.appendChild(assets.img("garota"));
+document.body.appendChild(assets.img("esqueleto"));
+document.body.appendChild(assets.img("orc"));
 
 const assets = new AssetManager();
 
