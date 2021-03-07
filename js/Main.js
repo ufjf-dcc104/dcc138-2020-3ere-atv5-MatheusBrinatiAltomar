@@ -38,6 +38,60 @@ cena1.adicionar(en1);
 cena1.adicionar(new Sprite({x: 110, y: 70, vy: 10, color: "red"}));
 cena1.adicionar(new Sprite({x: 110, y: 180, vy: -10, color: "red"}));
 
+window.setInterval(teste, 4000);
+function teste(){
+    let x = Math.floor(Math.random() * (canvas.width + 1));
+    let y = Math.floor(Math.random() * (canvas.height + 1))
+    if (x < 48) {
+        x = 48;
+    }
+    else if (x > 352) {
+        x = 352
+    }
+
+    if (y < 48) {
+        y = 48;
+    }
+    else if (y > 224) {
+        y = 224
+    }
+
+    let vX = Math.floor(Math.random() * 11);
+    if (Math.random() > 0.5) {
+        vX = vX * -1;
+    }
+
+    let vY = Math.floor(Math.random() * 11);
+    if (Math.random() > 0.5) {
+        vY = vY * -1;
+    }
+
+    let LINHAS = modeloMapa1.length;
+    let COLUNAS = modeloMapa1[0]?.length ?? 0;
+
+    let tiles = [];
+    for (let l = 0; l < LINHAS; l++) 
+    {
+        tiles[l] = [];
+        for (let c = 0; c < COLUNAS; c++) 
+        {
+            if (Math.floor((x+10) / 32) == l && Math.floor((y-10) / 32) == c) 
+            {
+                if (modeloMapa1[l][c] != 0) 
+                {
+                    teste();
+                }
+                else
+                {
+                    cena1.adicionar(new Sprite({x: x, y: y, vx: vX, vy: vY, color: "red"}));
+                    cena1.sprites[cena1.sprites.length - 1].mixer = mixer;
+                    cena1.sprites[cena1.sprites.length - 1].assets = assets;
+                }
+            }
+        }
+    }
+}
+
 for (let i = 0; i < cena1.sprites.length; i++)
 {
     cena1.sprites[i].mixer = mixer;

@@ -55,7 +55,7 @@ export default class Sprite
         }
     }
 
-    aplicaRestricoes(dt)
+    aplicaRestricoes()
     {
         this.aplicaRestricoesDireita(this.mapaX + 1, this.mapaY - 1);
         this.aplicaRestricoesDireita(this.mapaX + 1, this.mapaY);
