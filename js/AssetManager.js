@@ -61,4 +61,9 @@ export default class AssetManager{
     {
         this.mixer?.play(this.audio(chave));
     }
+
+    showImage(ctx, chave)
+    {
+        ctx.DrawImage();
+    }
 }
