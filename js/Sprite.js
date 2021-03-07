@@ -51,7 +51,8 @@ export default class Sprite
     {
         this.aplicaRestricoesDireita(dt);
         this.aplicaRestricoesEsquerda(dt);
-        
+        this.aplicaRestricoesCima(dt);
+        this.aplicaRestricoesBaixo(dt);        
     }
     
     aplicaRestricoesDireita(dt)
@@ -105,6 +106,62 @@ export default class Sprite
                 {
                     this.vx = 0;
                     this.x = tile.x + tile.w / 2 + this.w / 2 + 1;
+                }
+            }
+        }
+    }
+
+    aplicaRestricoesBaixo(dt)
+    {
+        if (this.vy > 0) 
+        {
+            const SIZE = this.cena.mapa.SIZE;
+            const proxMapaX = this.mapaX;
+            const proxMapaY = this.mapaY + 1;
+            if (this.cena.mapa.tiles[proxMapaY][proxMapaX] != 0) 
+            {
+                const tile = {
+                    x: proxMapaX * SIZE + SIZE / 2,
+                    y: proxMapaY * SIZE + SIZE / 2,
+                    w: SIZE,
+                    h: SIZE
+                };
+
+                this.cena.ctx.strokeStyle = "white";
+                this.cena.ctx.strokeRect(tile.x - SIZE / 2, tile.y - SIZE / 2, SIZE, SIZE);
+
+                if (this.colidiuCom(tile)) 
+                {
+                    this.vy = 0;
+                    this.y = tile.y - tile.h / 2 - this.h / 2 - 1;
+                }
+            }
+        }
+    }
+
+    aplicaRestricoesCima(dt)
+    {
+        if (this.vy < 0) 
+        {
+            const SIZE = this.cena.mapa.SIZE;
+            const proxMapaX = this.mapaX;
+            const proxMapaY = this.mapaY - 1;
+            if (this.cena.mapa.tiles[proxMapaY][proxMapaX] != 0) 
+            {
+                const tile = {
+                    x: proxMapaX * SIZE + SIZE / 2,
+                    y: proxMapaY * SIZE + SIZE / 2,
+                    w: SIZE,
+                    h: SIZE
+                };
+
+                this.cena.ctx.strokeStyle = "white";
+                this.cena.ctx.strokeRect(tile.x - SIZE / 2, tile.y - SIZE / 2, SIZE, SIZE);
+
+                if (this.colidiuCom(tile)) 
+                {
+                    this.vy = 0;
+                    this.y = tile.y + tile.h / 2 + this.h / 2 + 1;
                 }
             }
         }
