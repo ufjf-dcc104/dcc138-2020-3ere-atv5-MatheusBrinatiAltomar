@@ -49,19 +49,28 @@ export default class Sprite
 
     aplicaRestricoes(dt)
     {
-        this.aplicaRestricoesDireita(dt);
-        this.aplicaRestricoesEsquerda(dt);
-        this.aplicaRestricoesCima(dt);
-        this.aplicaRestricoesBaixo(dt);        
+        this.aplicaRestricoesDireita(this.mapaX + 1, this.mapaY - 1);
+        this.aplicaRestricoesDireita(this.mapaX + 1, this.mapaY);
+        this.aplicaRestricoesDireita(this.mapaX + 1, this.mapaY + 1);
+
+        this.aplicaRestricoesEsquerda(this.mapaX - 1, this.mapaY - 1);
+        this.aplicaRestricoesEsquerda(this.mapaX - 1, this.mapaY);
+        this.aplicaRestricoesEsquerda(this.mapaX - 1, this.mapaY + 1);
+
+        this.aplicaRestricoesCima(this.mapaX - 1, this.mapaY - 1);
+        this.aplicaRestricoesCima(this.mapaX, this.mapaY - 1);
+        this.aplicaRestricoesCima(this.mapaX + 1, this.mapaY - 1);
+
+        this.aplicaRestricoesBaixo(this.mapaX - 1, this.mapaY + 1);
+        this.aplicaRestricoesBaixo(this.mapaX, this.mapaY + 1);
+        this.aplicaRestricoesBaixo(this.mapaX + 1, this.mapaY + 1);        
     }
     
-    aplicaRestricoesDireita(dt)
+    aplicaRestricoesDireita(proxMapaX, proxMapaY)
     {
         if (this.vx > 0) 
         {
             const SIZE = this.cena.mapa.SIZE;
-            const proxMapaX = this.mapaX + 1;
-            const proxMapaY = this.mapaY;
             if (this.cena.mapa.tiles[proxMapaY][proxMapaX] != 0) 
             {
                 const tile = {
@@ -83,13 +92,11 @@ export default class Sprite
         }
     }
 
-    aplicaRestricoesEsquerda(dt)
+    aplicaRestricoesEsquerda(proxMapaX, proxMapaY)
     {
         if (this.vx < 0) 
         {
             const SIZE = this.cena.mapa.SIZE;
-            const proxMapaX = this.mapaX - 1;
-            const proxMapaY = this.mapaY;
             if (this.cena.mapa.tiles[proxMapaY][proxMapaX] != 0) 
             {
                 const tile = {
@@ -111,13 +118,11 @@ export default class Sprite
         }
     }
 
-    aplicaRestricoesBaixo(dt)
+    aplicaRestricoesBaixo(proxMapaX, proxMapaY)
     {
         if (this.vy > 0) 
         {
             const SIZE = this.cena.mapa.SIZE;
-            const proxMapaX = this.mapaX;
-            const proxMapaY = this.mapaY + 1;
             if (this.cena.mapa.tiles[proxMapaY][proxMapaX] != 0) 
             {
                 const tile = {
@@ -139,13 +144,11 @@ export default class Sprite
         }
     }
 
-    aplicaRestricoesCima(dt)
+    aplicaRestricoesCima(proxMapaX, proxMapaY)
     {
         if (this.vy < 0) 
         {
             const SIZE = this.cena.mapa.SIZE;
-            const proxMapaX = this.mapaX;
-            const proxMapaY = this.mapaY - 1;
             if (this.cena.mapa.tiles[proxMapaY][proxMapaX] != 0) 
             {
                 const tile = {
