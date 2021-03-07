@@ -14,6 +14,8 @@ export default class Sprite
         this.cena = null;
         this.mapaX = 0;
         this.mapaY = 0;
+        this.mixer = null;
+        this.assets = null;
     }
 
     desenhar(ctx)
@@ -39,12 +41,18 @@ export default class Sprite
 
     colidiuCom(outro)
     {
-        return !(
-            this.x - this.w / 2 > outro.x + outro.w / 2 ||
+        if (this.x - this.w / 2 > outro.x + outro.w / 2 ||
             this.x + this.w / 2 < outro.x - outro.w / 2 ||
             this.y - this.h / 2 > outro.y + outro.h / 2 ||
-            this.y + this.h / 2 < outro.y - outro.h / 2
-        );
+            this.y + this.h / 2 < outro.y - outro.h / 2) 
+        {
+            return false;
+        }
+        else
+        {
+            this.assets.play("boom");
+            return true;
+        }
     }
 
     aplicaRestricoes(dt)

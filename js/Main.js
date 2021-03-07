@@ -25,13 +25,19 @@ const mapa1 = new Mapa(10, 14, 32);
 mapa1.carregaMapa(modeloMapa1);
 cena1.configuraMapa(mapa1);
 
-const pc = new Sprite({x: 50, y: 90, vx: 10});
+const pc = new Sprite({x: 50, y: 80, vx: 10});
 const en1 = new Sprite({x: 160, vx: -10, color: "red"});
 
 cena1.adicionar(pc);
 cena1.adicionar(en1);
 cena1.adicionar(new Sprite({x: 110, y: 70, vy: 10, color: "red"}));
 cena1.adicionar(new Sprite({x: 110, y: 180, vy: -10, color: "red"}));
+
+for (let i = 0; i < cena1.sprites.length; i++)
+{
+    cena1.sprites[i].mixer = mixer;
+    cena1.sprites[i].assets = assets;
+}
 
 cena1.iniciar();
 
