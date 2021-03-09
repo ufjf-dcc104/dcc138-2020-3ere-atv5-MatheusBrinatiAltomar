@@ -37,7 +37,7 @@ cena1.adicionar(en1);
 cena1.adicionar(new Sprite({ x: 110, y: 70, vy: 10, color: "red" }));
 cena1.adicionar(new Sprite({ x: 110, y: 180, vy: -10, color: "red" }));
 
-window.setInterval(teste, 500);
+window.setInterval(teste, 4000);
 function teste() 
 {
   let y = Math.floor(Math.random() * mapa1.LINHAS);
