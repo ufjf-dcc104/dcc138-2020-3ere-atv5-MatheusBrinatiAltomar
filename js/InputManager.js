@@ -22,7 +22,6 @@ export default class InputManager
             {
                 that.comandos.set(comando, true);
             }
-            console.log(that.comandos.get(comando));
         });
         addEventListener("keyup", function(e){
             const comando = that.teclas.get(e.key);
@@ -31,7 +30,6 @@ export default class InputManager
             {
                 that.comandos.set(comando, false);
             }
-            console.log(that.comandos.get(comando));
         });
     }
 }
