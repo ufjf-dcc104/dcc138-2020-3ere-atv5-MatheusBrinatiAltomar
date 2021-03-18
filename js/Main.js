@@ -5,6 +5,7 @@ import Mixer from "./Mixer.js";
 import Sprite from "./Sprite.js";
 import modeloMapa1 from "../maps/mapa1.js";
 import InputManager from "./InputManager.js";
+import Game from "./Game.js";
 
 const input = new InputManager();
 const mixer = new Mixer(10);
@@ -32,6 +33,9 @@ input.configurarTeclado({
   ArrowUp: "MOVE_CIMA",
   ArrowDown: "MOVE_BAIXO"
 })
+
+const game = new Game(canvas, assets, input);
+game.adicionarCena("jogo", cena1);
 
 const cena1 = new Cena(canvas, assets);
 
