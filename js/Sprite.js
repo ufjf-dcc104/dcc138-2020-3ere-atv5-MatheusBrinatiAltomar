@@ -50,7 +50,7 @@ export default class Sprite
         }
         else
         {
-            this.assets.play("boom");
+            //this.assets.play("boom");
             return true;
         }
     }

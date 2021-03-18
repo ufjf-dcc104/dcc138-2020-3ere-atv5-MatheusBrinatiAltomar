@@ -4,7 +4,9 @@ import Mapa from "./Mapa.js";
 import Mixer from "./Mixer.js";
 import Sprite from "./Sprite.js";
 import modeloMapa1 from "../maps/mapa1.js";
+import InputManager from "./InputManager.js";
 
+const input = new InputManager();
 const mixer = new Mixer(10);
 const assets = new AssetManager(mixer);
 
@@ -23,6 +25,12 @@ const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 canvas.width = 14 * 32;
 canvas.height = 10 * 32;
+
+input.configurarTeclado({
+  "ArrowLeft": "MOVE_ESQUERDA",
+  "ArrowRight": "MOVE_DIREITA"
+})
+
 const cena1 = new Cena(canvas, assets);
 
 const mapa1 = new Mapa(10, 14, 32);
@@ -37,7 +45,7 @@ cena1.adicionar(en1);
 cena1.adicionar(new Sprite({ x: 110, y: 70, vy: 10, color: "red" }));
 cena1.adicionar(new Sprite({ x: 110, y: 180, vy: -10, color: "red" }));
 
-window.setInterval(teste, 4000);
+/*window.setInterval(teste, 4000);
 function teste() 
 {
   let y = Math.floor(Math.random() * mapa1.LINHAS);
@@ -78,7 +86,7 @@ function teste()
 for (let i = 0; i < cena1.sprites.length; i++) {
   cena1.sprites[i].mixer = mixer;
   cena1.sprites[i].assets = assets;
-}
+}*/
 
 cena1.iniciar();
 
