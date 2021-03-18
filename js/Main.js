@@ -35,9 +35,10 @@ input.configurarTeclado({
 })
 
 const game = new Game(canvas, assets, input);
-game.adicionarCena("jogo", cena1);
 
 const cena1 = new Cena(canvas, assets);
+game.adicionarCena("jogo", cena1);
+
 
 const mapa1 = new Mapa(10, 14, 32);
 mapa1.carregaMapa(modeloMapa1);
@@ -129,15 +130,15 @@ for (let i = 0; i < cena1.sprites.length; i++) {
   cena1.sprites[i].assets = assets;
 }*/
 
-cena1.iniciar();
+game.iniciar();
 
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "s":
-      cena1.iniciar();
+      game.iniciar();
       break;
     case "S":
-      cena1.parar();
+      game.parar();
       break;
     case "c":
       assets.play("moeda");
