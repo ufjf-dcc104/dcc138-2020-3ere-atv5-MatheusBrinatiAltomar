@@ -68,13 +68,19 @@ pc.controlar = function (dt)
     this.vy = 0;
   }
 }
-
-const en1 = new Sprite({ x: 160, vx: -10, color: "red" });
-
 cena1.adicionar(pc);
+
+function perseguePC(dt)
+{
+  this.vx = 25*Math.sign(pc.x - this.x);
+  this.vy = 25*Math.sign(pc.y - this.y);
+}
+
+const en1 = new Sprite({ x: 360, color: "red"});
 cena1.adicionar(en1);
-cena1.adicionar(new Sprite({ x: 110, y: 70, vy: 10, color: "red" }));
-cena1.adicionar(new Sprite({ x: 110, y: 180, vy: -10, color: "red" }));
+en1.controlar = perseguePC;
+cena1.adicionar(new Sprite({ x: 110, y: 70, color: "red", controlar: perseguePC }));
+cena1.adicionar(new Sprite({ x: 110, y: 180, color: "red", controlar: perseguePC }));
 
 /*window.setInterval(teste, 4000);
 function teste() 
