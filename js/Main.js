@@ -93,6 +93,18 @@ for (let i = 0; i < cena1.sprites.length; i++) {
 
 game.iniciar();
 
+document.addEventListener("visibilitychange", function()
+{
+  if (document.visibilityState === 'visible')
+  {
+    game.iniciar();
+  }
+  else
+  {
+    game.parar();
+  }
+});
+
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "s":
