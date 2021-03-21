@@ -27,7 +27,7 @@ export default class CenaJogo extends Cena
         mapa1.carregaMapa(modeloMapa1);
         this.configuraMapa(mapa1);
 
-        const pc = new Sprite({ x: 50, y: 90});
+        const pc = new Sprite({ x: 50, y: 90, w: 20, h: 30, assets: this.assets});
         pc.tags.add("pc");
         const cena = this
         pc.controlar = function (dt)
@@ -66,9 +66,9 @@ export default class CenaJogo extends Cena
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        const en1 = new Sprite({ x: 360, color: "red", controlar: perseguePC, tags: ["enemy"] });
+        const en1 = new Sprite({ x: 360, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets });
         this.adicionar(en1);
-        this.adicionar(new Sprite({ x: 110, y: 70, color: "red", controlar: perseguePC, tags: ["enemy"]  }));
-        this.adicionar(new Sprite({ x: 110, y: 180, color: "red", controlar: perseguePC, tags: ["enemy"]  }));
+        this.adicionar(new Sprite({ x: 180, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+        this.adicionar(new Sprite({ x: 160, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
     }
 }

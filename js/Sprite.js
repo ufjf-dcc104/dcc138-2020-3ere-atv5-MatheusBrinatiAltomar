@@ -2,7 +2,7 @@ export default class Sprite
 {
     //É responsável por modelar algo que se move na tela.
 
-    constructor({x=100, y=100, vx=0, vy=0, w=20, h=20, color="white", controlar = () => {}, tags = []}={})
+    constructor({x=100, y=100, vx=0, vy=0, w=20, h=20, color="white", controlar = () => {}, tags = [], assets = null}={})
     {
         this.x = x;
         this.y = y;
@@ -15,7 +15,7 @@ export default class Sprite
         this.mapaX = 0;
         this.mapaY = 0;
         this.mixer = null;
-        this.assets = null;
+        this.assets = assets;
         this.controlar = controlar;
         this.tags = new Set();
         tags.forEach((tag) => {
@@ -25,8 +25,19 @@ export default class Sprite
 
     desenhar(ctx)
     {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
+        if (this.tags.has("pc")) 
+        {
+            ctx.drawImage(this.assets.img("pc"), 0, 0, this.w, this.h, this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
+        }
+        else if (this.tags.has("enemy"))
+        {
+            ctx.drawImage(this.assets.img("esqueleto"), 0, 0, 50, 60, this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
+        }
+        else
+        {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
+        }
         ctx.strokeStyle = "blue";
         ctx.strokeRect(
             this.mapaX * this.cena.mapa.SIZE,
