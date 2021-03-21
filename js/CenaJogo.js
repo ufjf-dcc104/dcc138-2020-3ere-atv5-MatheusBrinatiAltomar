@@ -64,15 +64,18 @@ export default class CenaJogo extends Cena
     {
         super.preparar();
         const map = new Mapa(10, 14, 32);
+        let mapaNumero = 0;
 
-        if (this.mapa == 1)
+        if (this.mapa == 2)
         {
-            map.carregaMapa(mapa1);
+            mapaNumero = 2;
+            map.carregaMapa(mapa2);
             this.configuraMapa(map);
         }
-        else if (this.mapa == 2)
+        else
         {
-            map.carregaMapa(mapa2);
+            mapaNumero = 1;
+            map.carregaMapa(mapa1);
             this.configuraMapa(map);
         }
         
@@ -115,14 +118,33 @@ export default class CenaJogo extends Cena
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        this.adicionar(new Sprite({ x: 360, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
-        this.adicionar(new Sprite({ x: 230, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
-        this.adicionar(new Sprite({ x: 200, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+        console.log(mapaNumero);
+        if (mapaNumero == 1)
+        {
+            console.log("t");
+            this.adicionar(new Sprite({ x: 360, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 230, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 200, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
 
-        this.adicionar(new Sprite({ x: 40, y: 260, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
-        this.adicionar(new Sprite({ x: 256, y: 32, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
-        this.adicionar(new Sprite({ x: 256, y: 192, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 40, y: 260, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 256, y: 32, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 256, y: 192, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
 
-        this.adicionar(new Sprite({ x: 384, y: 256, w: 25, h: 25, tags: ["key"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 384, y: 256, w: 25, h: 25, tags: ["key"], assets: this.assets }));
+        }
+        else if (mapaNumero == 2)
+        {
+            this.adicionar(new Sprite({ x: 260, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 230, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 200, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+
+            this.adicionar(new Sprite({ x: 40, y: 260, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 256, y: 32, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 256, y: 192, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+
+            this.adicionar(new Sprite({ x: 384, y: 256, w: 25, h: 25, tags: ["fim"], assets: this.assets }));
+        }
+
+        
     }
 }
