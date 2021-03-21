@@ -7,18 +7,38 @@ export default class CenaJogo extends Cena
 {
     quandoColidir(a, b)
     {
-        if (!this.aRemover.includes(a)) 
-        {
-            this.aRemover.push(a)    
-        }
-        if (!this.aRemover.includes(b)) 
-        {
-            this.aRemover.push(b)    
-        }
         if (a.tags.has("pc") && b.tags.has("enemy"))
         {
+            if (!this.aRemover.includes(a)) 
+            {
+                this.aRemover.push(a)    
+            }
+            if (!this.aRemover.includes(b)) 
+            {
+                this.aRemover.push(b)    
+            }
             this.game.selecionaCena("fim");
         }
+        else if (a.tags.has("pc") && b.tags.has("coin"))
+        {
+            if (!this.aRemover.includes(b)) 
+            {
+                this.aRemover.push(b)    
+            }
+        }
+        else
+        {
+            if (!this.aRemover.includes(a)) 
+            {
+                this.aRemover.push(a)    
+            }
+            if (!this.aRemover.includes(b)) 
+            {
+                this.aRemover.push(b)    
+            }
+        }
+        
+        
     }
     preparar()
     {
@@ -66,9 +86,12 @@ export default class CenaJogo extends Cena
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        const en1 = new Sprite({ x: 360, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets });
-        this.adicionar(en1);
-        this.adicionar(new Sprite({ x: 180, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
-        this.adicionar(new Sprite({ x: 160, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+        this.adicionar(new Sprite({ x: 360, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+        this.adicionar(new Sprite({ x: 230, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+        this.adicionar(new Sprite({ x: 200, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+
+        this.adicionar(new Sprite({ x: 40, y: 260, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+        this.adicionar(new Sprite({ x: 256, y: 32, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+        this.adicionar(new Sprite({ x: 256, y: 192, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
     }
 }

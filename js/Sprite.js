@@ -33,6 +33,10 @@ export default class Sprite
         {
             ctx.drawImage(this.assets.img("esqueleto"), 0, 0, 50, 60, this.x - this.w / 2, this.y - this.h / 2, this.w, this.h);
         }
+        else if (this.tags.has("coin"))
+        {
+            ctx.drawImage(this.assets.img("moeda_sprite"), 0, 0, 64, 64, this.x, this.y, this.w, this.h);
+        }
         else
         {
             ctx.fillStyle = this.color;

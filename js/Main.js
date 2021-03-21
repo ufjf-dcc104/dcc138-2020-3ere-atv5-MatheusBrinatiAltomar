@@ -19,11 +19,13 @@ assets.carregaImagem("garota", "assets/garota.png");
 assets.carregaImagem("esqueleto", "assets/skelly.png");
 assets.carregaImagem("orc", "assets/orc.png");
 
+assets.carregaImagem("moeda_sprite", "assets/Coin.png");
+
 assets.carregaImagem("parede", "assets/wall.png");
 assets.carregaImagem("chao", "assets/piso.png");
 assets.carregaImagem("agua", "assets/agua.png");
 
-assets.carregaAudio("moeda", "assets/coin.wav");
+assets.carregaAudio("moeda_audio", "assets/coin.wav");
 assets.carregaAudio("boom", "assets/boom.wav");
 
 const canvas = document.querySelector("canvas");
@@ -115,7 +117,7 @@ document.addEventListener("keydown", (e) => {
       game.parar();
       break;
     case "c":
-      assets.play("moeda");
+      assets.play("moeda_audio");
       break;
     case "b":
       assets.play("boom");
