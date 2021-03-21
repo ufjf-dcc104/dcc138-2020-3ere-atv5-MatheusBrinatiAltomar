@@ -5,8 +5,7 @@ import Game from "./Game.js";
 import CenaCarregando from "./CenaCarregando.js";
 import CenaJogo from "./CenaJogo.js";
 import CenaFim from "./CenaFim.js";
-import mapa1 from "../maps/mapa1.js";
-import mapa2 from "../maps/mapa2.js";
+
 
 const input = new InputManager();
 const mixer = new Mixer(10);
@@ -48,8 +47,8 @@ const cena2 = new CenaJogo();
 const cena3 = new CenaFim();
 
 game.adicionarCena("carregando", cena0);
-game.adicionarCena("jogo", cena1, mapa1);
-game.adicionarCena("jogo2", cena2, mapa2);
+game.adicionarCena("jogo", cena1, 1);
+game.adicionarCena("jogo2", cena2, 2);
 game.adicionarCena("fim", cena3);
 
 /*window.setInterval(teste, 4000);

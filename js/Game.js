@@ -51,9 +51,4 @@ export default class Game {
         this.pontos	++;
     }
 
-    exibirPontuacao()
-    {
-
-    }
-
 }

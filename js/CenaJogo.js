@@ -1,7 +1,8 @@
 import Cena from "./Cena.js";
 import Mapa from "./Mapa.js";
 import Sprite from "./Sprite.js";
-import modeloMapa1 from "../maps/mapa1.js";
+import mapa1 from "../maps/mapa1.js";
+import mapa2 from "../maps/mapa2.js";
 
 export default class CenaJogo extends Cena
 {
@@ -62,10 +63,19 @@ export default class CenaJogo extends Cena
     preparar()
     {
         super.preparar();
-        const mapa1 = new Mapa(10, 14, 32);
-        mapa1.carregaMapa(modeloMapa1);
-        this.configuraMapa(mapa1);
+        const map = new Mapa(10, 14, 32);
 
+        if (this.mapa == 1)
+        {
+            map.carregaMapa(mapa1);
+            this.configuraMapa(map);
+        }
+        else if (this.mapa == 2)
+        {
+            map.carregaMapa(mapa2);
+            this.configuraMapa(map);
+        }
+        
         const pc = new Sprite({ x: 50, y: 90, w: 20, h: 30, assets: this.assets});
         pc.tags.add("pc");
         const cena = this
