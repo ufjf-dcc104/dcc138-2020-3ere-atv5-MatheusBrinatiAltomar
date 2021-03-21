@@ -21,10 +21,15 @@ export default class CenaJogo extends Cena
         }
         else if (a.tags.has("pc") && b.tags.has("coin"))
         {
+            this.assets.play("moeda_audio");
             if (!this.aRemover.includes(b)) 
             {
                 this.aRemover.push(b)    
             }
+        }
+        else if (a.tags.has("enemy") && b.tags.has("coin"))
+        {
+            return;
         }
         else
         {
