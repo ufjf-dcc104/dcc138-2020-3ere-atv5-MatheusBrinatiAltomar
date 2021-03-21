@@ -7,6 +7,7 @@ export default class Game {
         this.input = input;
         this.cenas = new Map();
         this.cena = null;
+        this.pontos = 0;
     }
 
     adicionarCena(chave, cena)
@@ -43,4 +44,15 @@ export default class Game {
     {
         this.cena?.parar();
     }
+
+    adicionarPontos()
+    {
+        this.pontos	++;
+    }
+
+    exibirPontuacao()
+    {
+        
+    }
+
 }

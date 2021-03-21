@@ -22,6 +22,7 @@ export default class CenaJogo extends Cena
         else if (a.tags.has("pc") && b.tags.has("coin"))
         {
             this.assets.play("moeda_audio");
+            this.game.adicionarPontos();
             if (!this.aRemover.includes(b)) 
             {
                 this.aRemover.push(b)    

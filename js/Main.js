@@ -1,9 +1,5 @@
 import AssetManager from "./AssetManager.js";
-
-
 import Mixer from "./Mixer.js";
-
-
 import InputManager from "./InputManager.js";
 import Game from "./Game.js";
 import CenaCarregando from "./CenaCarregando.js";
