@@ -28,7 +28,20 @@ export default class CenaJogo extends Cena
                 this.aRemover.push(b)    
             }
         }
+        else if (a.tags.has("pc") && b.tags.has("key"))
+        {
+            if (!this.aRemover.includes(b)) 
+            {
+                this.aRemover.push(b)    
+            }
+            console.log("próxima fase");
+            this.game.selecionaCena("jogo2");
+        }
         else if (a.tags.has("enemy") && b.tags.has("coin"))
+        {
+            return;
+        }
+        else if (a.tags.has("enemy") && b.tags.has("key"))
         {
             return;
         }
@@ -99,5 +112,7 @@ export default class CenaJogo extends Cena
         this.adicionar(new Sprite({ x: 40, y: 260, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
         this.adicionar(new Sprite({ x: 256, y: 32, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
         this.adicionar(new Sprite({ x: 256, y: 192, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
+
+        this.adicionar(new Sprite({ x: 384, y: 256, w: 25, h: 25, tags: ["key"], assets: this.assets }));
     }
 }
