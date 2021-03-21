@@ -10,7 +10,7 @@ export default class Game {
         this.pontos = 0;
     }
 
-    adicionarCena(chave, cena, mapa)
+    adicionarCena(chave, cena, mapaNumero)
     {
         this.cenas.set(chave, cena);
         cena.game = this;
@@ -18,20 +18,21 @@ export default class Game {
         cena.ctx = this.ctx;
         cena.assets = this.assets;
         cena.input = this.input;
-        cena.mapa = mapa;
+        cena.mapaNumero = mapaNumero;
         if (this.cena === null)
         {
             this.cena = cena;    
         }
     }
 
-    selecionaCena(chave)
+    selecionaCena(chave, mapaNumero)
     {
         if (this.cenas.has(chave))
         {
             this.parar();
             this.cena = this.cenas.get(chave);
             this.cena.preparar();
+            this.cena.mapaNumero = mapaNumero;
             this.iniciar();
         }
     }

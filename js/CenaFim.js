@@ -14,6 +14,7 @@ export default class CenaFim extends Cena
         if (this.assets.acabou()) 
         {
             this.ctx.fillText(`${this.game.pontos} moedas coletadas`, this.canvas.width/2, this.canvas.height/2 + 80);
+            this.game.pontos = 0;
             this.ctx.fillText("Pressione espaço para continuar", this.canvas.width/2, this.canvas.height/2 + 40);
         }
     }

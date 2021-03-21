@@ -23,7 +23,7 @@ export default class CenaCarregando extends Cena
         {
             if (this.input.comandos.get("PROXIMA_CENA"))
             {
-                this.game.selecionaCena("jogo");
+                this.game.selecionaCena("jogo", 1);
                 return;
             }
         }

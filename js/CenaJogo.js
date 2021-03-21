@@ -6,6 +6,7 @@ import mapa2 from "../maps/mapa2.js";
 
 export default class CenaJogo extends Cena
 {
+    
     quandoColidir(a, b)
     {
         if (a.tags.has("pc") && b.tags.has("enemy"))
@@ -36,7 +37,20 @@ export default class CenaJogo extends Cena
                 this.aRemover.push(b)    
             }
             console.log("próxima fase");
-            this.game.selecionaCena("jogo2");
+            //this.mapaNumero = 2;
+            this.game.selecionaCena("jogo2", 2);
+        }
+        else if (a.tags.has("pc") && b.tags.has("fim"))
+        {
+            if (!this.aRemover.includes(a)) 
+            {
+                this.aRemover.push(a)    
+            }
+            if (!this.aRemover.includes(b)) 
+            {
+                this.aRemover.push(b)    
+            }
+            this.game.selecionaCena("fim");
         }
         else if (a.tags.has("enemy") && b.tags.has("coin"))
         {
@@ -62,19 +76,19 @@ export default class CenaJogo extends Cena
     }
     preparar()
     {
+        console.log(this.mapaNumero);
         super.preparar();
         const map = new Mapa(10, 14, 32);
-        let mapaNumero = 0;
 
-        if (this.mapa == 2)
+        if (this.mapaNumero == 2)
         {
-            mapaNumero = 2;
+            this.mapaNumero = 2;
             map.carregaMapa(mapa2);
             this.configuraMapa(map);
         }
         else
         {
-            mapaNumero = 1;
+            this.mapaNumero = 1;
             map.carregaMapa(mapa1);
             this.configuraMapa(map);
         }
@@ -118,10 +132,8 @@ export default class CenaJogo extends Cena
             this.vy = 25*Math.sign(pc.y - this.y);
         }
 
-        console.log(mapaNumero);
-        if (mapaNumero == 1)
+        if (this.mapaNumero == 1)
         {
-            console.log("t");
             this.adicionar(new Sprite({ x: 360, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
             this.adicionar(new Sprite({ x: 230, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
             this.adicionar(new Sprite({ x: 200, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
@@ -131,12 +143,11 @@ export default class CenaJogo extends Cena
             this.adicionar(new Sprite({ x: 256, y: 192, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
 
             this.adicionar(new Sprite({ x: 384, y: 256, w: 25, h: 25, tags: ["key"], assets: this.assets }));
+            
         }
-        else if (mapaNumero == 2)
+        else if (this.mapaNumero == 2)
         {
-            this.adicionar(new Sprite({ x: 260, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
-            this.adicionar(new Sprite({ x: 230, y: 70, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
-            this.adicionar(new Sprite({ x: 200, y: 180, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
+            this.adicionar(new Sprite({ x: 300, w: 25, h: 25, color: "red", controlar: perseguePC, tags: ["enemy"], assets: this.assets }));
 
             this.adicionar(new Sprite({ x: 40, y: 260, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
             this.adicionar(new Sprite({ x: 256, y: 32, w: 25, h: 25, tags: ["coin"], assets: this.assets }));
@@ -144,7 +155,5 @@ export default class CenaJogo extends Cena
 
             this.adicionar(new Sprite({ x: 384, y: 256, w: 25, h: 25, tags: ["fim"], assets: this.assets }));
         }
-
-        
     }
 }

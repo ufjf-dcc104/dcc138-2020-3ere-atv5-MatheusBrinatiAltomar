@@ -7,6 +7,7 @@ export default class Cena
         this.ctx = canvas?.getContext("2d");
         this.assets = assets;
         this.game = null;
+        let mapaNumero = 0;
         this.preparar();
     }
 
@@ -138,7 +139,6 @@ export default class Cena
         this.t0 = null;
         this.dt = 0;
         this.idAnim = null;
-        //this.mapa = null;
         this.rodando = true;
     }
 }

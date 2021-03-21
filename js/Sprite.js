@@ -37,7 +37,7 @@ export default class Sprite
         {
             ctx.drawImage(this.assets.img("moeda_sprite"), 0, 0, 64, 64, this.x, this.y, this.w, this.h);
         }
-        else if (this.tags.has("key"))
+        else if (this.tags.has("key") || this.tags.has("fim"))
         {
             ctx.drawImage(this.assets.img("key"), 0, 0, 700, 500, this.x, this.y, this.w, this.h);
         }
